@@ -1,5 +1,6 @@
 const board = document.getElementById("board")
 const info = document.querySelector("#info-container")
+const form = document.querySelector("form")
 const boardData = []
 let match = -1
 let isMismatched = false
@@ -41,9 +42,11 @@ const pics = [
   },
 ]
 
-play()
+form.addEventListener("submit", play)
 
-function play() {
+function play(evt) {
+  evt.preventDefault()
+  form.style.display = "none"
   shuffle()
   renderBoard()
   // clearBoard()
@@ -64,6 +67,7 @@ function shuffle() {
 }
 
 function renderBoard() {
+  board.style.display = "flex"
   boardData.forEach(srcData => {
     const cell = document.createElement("div")
     const pic = document.createElement("img")
