@@ -85,7 +85,7 @@ function reveal(evt) {
   evt.preventDefault()
   const square = evt.target
   const squareId = parseInt(square.classList[0])
-  if(boardData[square.classList[0]].isPaired) {
+  if(boardData[square.classList[0]].isPaired || !square.firstChild) {
     return
   }
   console.log(match, squareId)
