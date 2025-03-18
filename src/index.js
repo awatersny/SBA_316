@@ -1,4 +1,5 @@
-const board = document.getElementById(board)
+const board = document.getElementById("board")
+const boardData = []
 let cells
 
 const pics = [
@@ -35,3 +36,16 @@ const pics = [
     instances: 0
   },
 ]
+
+shuffle()
+
+function shuffle() {
+  while(boardData.length < 16){
+    const rand = Math.floor(Math.random() * 8)
+    if(pics[rand].instances < 2) {
+      boardData.push(pics[rand].src)
+      pics[rand].instances++
+    }
+  }
+  console.log(boardData)
+}
