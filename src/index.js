@@ -41,9 +41,13 @@ const pics = [
   },
 ]
 
-shuffle()
-renderBoard()
-// clearBoard()
+play()
+
+function play() {
+  shuffle()
+  renderBoard()
+  // clearBoard()
+}
 
 function shuffle() {
   while(boardData.length < 16){
