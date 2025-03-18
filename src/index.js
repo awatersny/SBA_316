@@ -89,7 +89,6 @@ function reveal(evt) {
   }
   const square = evt.target
   const squareId = parseInt(square.classList[0])
-  console.log()
   if(isMismatched) {
     isMismatched = false
     match = -1
@@ -106,7 +105,6 @@ function reveal(evt) {
     match = -1
     return
   }
-  console.log("hit")
   isMismatched = true
 }
 
