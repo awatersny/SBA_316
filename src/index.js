@@ -1,6 +1,7 @@
 const board = document.getElementById("board")
 const info = document.querySelector("#info-container")
 const boardData = []
+let pair = []
 let cells
 
 const pics = [
@@ -48,7 +49,8 @@ function shuffle() {
     if(pics[rand].instances < 2) {
       boardData.push({
         id: rand,
-        src: pics[rand].src
+        src: pics[rand].src,
+        isPaired: false
       })
       pics[rand].instances++
     }
@@ -84,5 +86,15 @@ function reveal(evt) {
     evt.target.firstChild.style.display = "block"
     return
   }
-  evt.target.style.display = "none"
+  console.log(boardData[evt.target.classList[0]])
+  hide()
+}
+
+function hide() {
+  board.childNodes.forEach(child => {
+    const square = child.firstChild
+    if(!boardData[square.classList[0]].isPaired) {
+      child.firstChild.style.display = "none"
+    }
+  })
 }
