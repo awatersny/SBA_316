@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+  width: 100vw;
+}
+
+main {
+  width: 100vw;
+}
+
+#bg-img-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  z-index: -1;
+}
+
+#bg-img {
+  width: 100%;
+}
