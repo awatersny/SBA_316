@@ -1,7 +1,7 @@
 const board = document.getElementById("board")
 const info = document.querySelector("#info-container")
 const boardData = []
-let pair = []
+let match = -1
 let cells
 
 const pics = [
