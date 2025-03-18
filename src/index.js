@@ -39,6 +39,7 @@ const pics = [
 
 shuffle()
 renderBoard()
+// clearBoard()
 
 function shuffle() {
   while(boardData.length < 16){
@@ -53,17 +54,21 @@ function shuffle() {
   }
 }
 
-/* <div class="cell">
-  <img src="assets/atlantic_sunset.jpg" alt="atlantic_sunset">
-</div> */
 function renderBoard() {
   boardData.forEach(srcData => {
     const cell = document.createElement("div")
     const pic = document.createElement("img")
     cell.setAttribute("class", `${srcData.id} cell`)
-    pic.setAttribute("src", srcData.src)
+    cell.style.backgroundColor = "#003049"
+    // pic.setAttribute("src", srcData.src)
     cell.appendChild(pic)
     board.appendChild(cell)
-    console.log(cell.getAttribute("class")[0])
+    // console.log(cell.getAttribute("class")[0])
   })
+}
+
+function clearBoard() {
+  while(board.firstChild) {
+    board.removeChild(board.firstChild)
+  }
 }
