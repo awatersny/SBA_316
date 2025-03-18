@@ -1,4 +1,5 @@
 const board = document.getElementById("board")
+const info = document.querySelector("#info-container")
 const boardData = []
 let cells
 
@@ -60,10 +61,14 @@ function renderBoard() {
     const pic = document.createElement("img")
     cell.setAttribute("class", `${srcData.id} cell`)
     cell.style.backgroundColor = "#003049"
-    // pic.setAttribute("src", srcData.src)
+    pic.setAttribute("src", srcData.src)
+    pic.setAttribute("class", srcData.id)
+    cell.addEventListener("click", reveal)
     cell.appendChild(pic)
+    pic.style.display = "none"
     board.appendChild(cell)
     // console.log(cell.getAttribute("class")[0])
+
   })
 }
 
@@ -71,4 +76,13 @@ function clearBoard() {
   while(board.firstChild) {
     board.removeChild(board.firstChild)
   }
+}
+
+function reveal(evt) {
+  evt.preventDefault()
+  if(evt.target.classList[1] === "cell") {
+    evt.target.firstChild.style.display = "block"
+    return
+  }
+  evt.target.style.display = "none"
 }
