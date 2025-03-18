@@ -2,6 +2,7 @@ const board = document.getElementById("board")
 const info = document.querySelector("#info-container")
 const boardData = []
 let match = -1
+let isMismatched = false
 let pairCount = 0
 let cells
 
@@ -83,29 +84,30 @@ function clearBoard() {
 
 function reveal(evt) {
   evt.preventDefault()
-  const square = evt.target
-  const squareId = parseInt(square.classList[0])
-  if(boardData[square.classList[0]].isPaired || !square.firstChild) {
+  if(boardData[evt.target.classList[0]].isPaired || evt.target.classList[1] !== "cell") {
     return
   }
-  console.log(match, squareId)
+  const square = evt.target
+  const squareId = parseInt(square.classList[0])
+  console.log()
+  if(isMismatched) {
+    isMismatched = false
+    match = -1
+    hide()
+  }
+  square.firstChild.style.display = "block"
   if(match === -1){
-    if(square.classList[1] === "cell") {
-      square.firstChild.style.display = "block"
-      match = squareId
-      return
-    }
+    match = squareId
+    return
   }
   if(match === squareId) {
     boardData[square.classList[0]].isPaired = true
-    square.firstChild.style.display = "block"
     pairCount++
-    console.log(pairCount)
     match = -1
     return
   }
-  match = -1
-  hide()
+  console.log("hit")
+  isMismatched = true
 }
 
 function hide() {
