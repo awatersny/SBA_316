@@ -9,6 +9,7 @@ header {
   background-color: #EAE2B7;
   position: fixed;
   width: 100vw;
+  border-bottom: 10px ridge #003049;
 }
 
 h1 {

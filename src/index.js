@@ -1,13 +1,14 @@
-// TODO Modify the HTML or text content of at least one element in response to user interaction using innerHTML, innerText, or textContent.
-// TODO Use at least two Browser Object Model (BOM) properties or methods.  (One more to go)
-// TODO Include a README file that contains a description of your application.
-// TODO Use the DocumentFragment interface or HTML templating with the cloneNode method to create templated content. 
+// // TODO Modify the HTML or text content of at least one element in response to user interaction using innerHTML, innerText, or textContent.
+//// TODO Use at least two Browser Object Model (BOM) properties or methods.  (One more to go)
+//// TODO Include a README file that contains a description of your application.
+//// TODO Use the DocumentFragment interface or HTML templating with the cloneNode method to create templated content. 
 
 const board = document.getElementById("board")
 const info = document.querySelector("#info-container")
 const form = document.querySelector("form")
 const msgEl = document.getElementById("msg")
 const boardData = []
+let userVal = ""
 let match = -1
 let isMismatched = false
 let username = ""
@@ -54,7 +55,7 @@ form.addEventListener("submit", play)
 function play(evt) {
   evt.preventDefault()
   const userReg = /^\w+$/
-  let userVal = evt.target.childNodes[1].value
+  userVal = evt.target.childNodes[1].value
   if(!userReg.test(userVal)) {
     alert("Your username must not contain any special characters or whitespace!")
     evt.target.childNodes[1].value = ""
@@ -62,7 +63,7 @@ function play(evt) {
   }
   username = userVal
   form.style.display = "none"
-  renderMsg(`Hello ${userVal}!`)
+  renderMsg(`Hello ${userVal}.  Match the images.`)
   shuffle()
   renderBoard()
   // clearBoard()
@@ -119,6 +120,7 @@ function reveal(evt) {
   }
   square.firstChild.style.display = "block"
   if(match === -1){
+    renderMsg("Match the images.")
     match = squareId
     return
   }
@@ -126,8 +128,14 @@ function reveal(evt) {
     boardData[square.classList[0]].isPaired = true
     pairCount++
     match = -1
+    if(pairCount === 8) {
+      renderMsg(`Congratulations ${userVal}!  You've matched them all!`)
+    } else {
+      renderMsg(`Good job, ${userVal}!  You found a pair`)
+    }
     return
   }
+  renderMsg("Those two don't match.  Try again.")
   isMismatched = true
 }
 
@@ -142,5 +150,5 @@ function hide() {
 
 function renderMsg(msg) {
   msgEl.style.display = "flex"
-  msgEl.innerHTML = `<h2>${msg}</h2>`
+  msgEl.innerHTML = `<h2><pre>${msg}</pre></h2>`
 }
