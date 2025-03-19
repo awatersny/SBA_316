@@ -1,5 +1,3 @@
-//// TODO Use the DocumentFragment interface or HTML templating with the cloneNode method to create templated content. 
-
 const board = document.getElementById("board")
 const info = document.querySelector("#info-container")
 const form = document.querySelector("form")
