@@ -32,6 +32,7 @@ form {
   background-color: #003049;
   color: #EAE2B7;
   margin-top: 10vh;
+  min-width: 200px;
 }
 
 #msg {
