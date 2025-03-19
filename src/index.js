@@ -62,6 +62,7 @@ function play(evt) {
   }
   username = userVal
   form.style.display = "none"
+  renderMsg(`Hello ${userVal}!`)
   shuffle()
   renderBoard()
   // clearBoard()
@@ -137,4 +138,9 @@ function hide() {
       child.firstChild.style.display = "none"
     }
   })
+}
+
+function renderMsg(msg) {
+  msgEl.style.display = "flex"
+  msgEl.innerHTML = `<h2>${msg}</h2>`
 }
