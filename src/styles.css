@@ -22,9 +22,10 @@ h2 {
 
 form {
   display: flex;
-  width: 50%;
-  height: 250px;
+  width: 20%;
+  height: 200px;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
   padding: 40px;
   border: 10px outset #EAE2B7;
