@@ -141,7 +141,7 @@ function reveal(evt) {
       setTimeout(() => {
         msgEl.addEventListener("click", reset)
         renderMsg("Click here to restart.")
-      }, 2000);
+      }, 1500);
     } else {
       renderMsg(`Good job, ${username}!  You found a pair`)
     }
