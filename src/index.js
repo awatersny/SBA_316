@@ -1,6 +1,3 @@
-// // TODO Modify the HTML or text content of at least one element in response to user interaction using innerHTML, innerText, or textContent.
-// // TODO Use at least two Browser Object Model (BOM) properties or methods.  (One more to go)
-//// TODO Include a README file that contains a description of your application.
 //// TODO Use the DocumentFragment interface or HTML templating with the cloneNode method to create templated content. 
 
 const board = document.getElementById("board")
@@ -88,19 +85,23 @@ function shuffle() {
   })
 }
 
+function createCell(id, src) {
+  const cell = document.createElement("div")
+  const pic = document.createElement("img")
+  cell.setAttribute("class", `${id} cell`)
+  cell.style.backgroundColor = "#003049"
+  pic.setAttribute("src", src)
+  pic.setAttribute("class", id)
+  cell.addEventListener("click", reveal)
+  cell.appendChild(pic)
+  pic.style.display = "none"
+  board.appendChild(cell)
+}
+
 function renderBoard() {
   board.style.display = "flex"
   boardData.forEach(srcData => {
-    const cell = document.createElement("div")
-    const pic = document.createElement("img")
-    cell.setAttribute("class", `${srcData.id} cell`)
-    cell.style.backgroundColor = "#003049"
-    pic.setAttribute("src", srcData.src)
-    pic.setAttribute("class", srcData.id)
-    cell.addEventListener("click", reveal)
-    cell.appendChild(pic)
-    pic.style.display = "none"
-    board.appendChild(cell)
+    createCell(srcData.id, srcData.src)
   })
 }
 
