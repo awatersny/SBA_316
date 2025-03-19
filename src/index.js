@@ -1,5 +1,5 @@
 // TODO Modify the HTML or text content of at least one element in response to user interaction using innerHTML, innerText, or textContent.
-// TODO Use at least two Browser Object Model (BOM) properties or methods.
+// TODO Use at least two Browser Object Model (BOM) properties or methods.  (One more to go)
 // TODO Include a README file that contains a description of your application.
 // TODO Use the DocumentFragment interface or HTML templating with the cloneNode method to create templated content. 
 
