@@ -140,6 +140,7 @@ function reveal(evt) {
       renderMsg(`Congratulations ${username}!  You've matched them all!`)
       setTimeout(() => {
         msgEl.addEventListener("click", reset)
+        msgEl.style.cursor = "default"
         renderMsg("Click here to restart.")
       }, 1500);
     } else {
@@ -168,9 +169,10 @@ function renderMsg(msg) {
 function reset(evt) {
   evt.preventDefault()
   msgEl.removeEventListener("click", reset)
-    msgEl.style.border = "10px inset #003049"
+  msgEl.style.border = "10px inset #003049"
   setTimeout(() => {
     msgEl.style.border = "10px outset #003049"
+    msgEl.style.cursor = "auto"
     clearBoard()
     username = ""
     pairCount = 0

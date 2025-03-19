@@ -44,6 +44,7 @@ form {
   min-width: 760px;
   border: 10px outset #003049;
   background-color: #EAE2B7;
+  cursor: auto;
 }
 
 #msg-container {
