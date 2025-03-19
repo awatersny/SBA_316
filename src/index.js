@@ -130,6 +130,7 @@ function reveal(evt) {
     match = -1
     if(pairCount === 8) {
       renderMsg(`Congratulations ${userVal}!  You've matched them all!`)
+      msgEl.addEventListener("click", reset)
     } else {
       renderMsg(`Good job, ${userVal}!  You found a pair`)
     }
@@ -151,4 +152,12 @@ function hide() {
 function renderMsg(msg) {
   msgEl.style.display = "flex"
   msgEl.innerHTML = `<h2><pre>${msg}</pre></h2>`
+}
+
+function reset(evt) {
+  evt.preventDefault()
+  msgEl.removeEventListener("click", reset)
+  // setTimeout(() => {
+    
+  // }, timeout);
 }

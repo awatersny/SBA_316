@@ -16,6 +16,10 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  margin: 0;
+}
+
 form {
   display: flex;
   width: 50%;
@@ -34,7 +38,8 @@ form {
   display: none;
   align-items: center;
   justify-content: center;
-  width: 50%;
+  width: 760px;
+  min-width: 760px;
   border: 10px outset #003049;
   background-color: #EAE2B7;
 }
@@ -70,6 +75,7 @@ form {
   display: none;
   flex-wrap: wrap;
   width: 760px;
+  min-width: 760px;
   box-shadow: 10px 10px 11px #000000;
   border: 10px outset #EAE2B7;
 }
