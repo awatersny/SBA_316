@@ -1,5 +1,7 @@
 // TODO Modify the HTML or text content of at least one element in response to user interaction using innerHTML, innerText, or textContent.
+// TODO Use at least two Browser Object Model (BOM) properties or methods.
 // TODO Include a README file that contains a description of your application.
+// TODO Use the DocumentFragment interface or HTML templating with the cloneNode method to create templated content. 
 
 const board = document.getElementById("board")
 const info = document.querySelector("#info-container")
@@ -7,6 +9,7 @@ const form = document.querySelector("form")
 const boardData = []
 let match = -1
 let isMismatched = false
+let username = ""
 let pairCount = 0
 let cells
 
@@ -52,10 +55,11 @@ function play(evt) {
   const userReg = /^\w+$/
   let userVal = evt.target.childNodes[1].value
   if(!userReg.test(userVal)) {
-    console.log("Create a div to display messages")
+    alert("Your username must not contain any special characters or whitespace!")
     evt.target.childNodes[1].value = ""
     return
   }
+  username = userVal
   form.style.display = "none"
   shuffle()
   renderBoard()
