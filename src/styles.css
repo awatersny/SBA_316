@@ -6,6 +6,9 @@ body {
 header {
   display: flex;
   justify-content: center;
+  background-color: #EAE2B7;
+  position: fixed;
+  width: 100vw;
 }
 
 h1 {
