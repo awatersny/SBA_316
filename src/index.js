@@ -54,6 +54,10 @@ function play(evt) {
   evt.preventDefault()
   const userReg = /^\w+$/
   let userVal = evt.target.childNodes[1].value
+  if(userVal.length > 30) {
+    alert("Your username is too long!  Please keep it under 30 characters.")
+    return
+  }
   if(!userReg.test(userVal)) {
     alert("Your username must not contain any special characters or whitespace!")
     evt.target.childNodes[1].value = ""
