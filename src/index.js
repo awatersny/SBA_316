@@ -1,3 +1,6 @@
+// TODO Modify the HTML or text content of at least one element in response to user interaction using innerHTML, innerText, or textContent.
+// TODO Include a README file that contains a description of your application.
+
 const board = document.getElementById("board")
 const info = document.querySelector("#info-container")
 const form = document.querySelector("form")
@@ -46,6 +49,13 @@ form.addEventListener("submit", play)
 
 function play(evt) {
   evt.preventDefault()
+  const userReg = /^\w+$/
+  let userVal = evt.target.childNodes[1].value
+  if(!userReg.test(userVal)) {
+    console.log("Create a div to display messages")
+    evt.target.childNodes[1].value = ""
+    return
+  }
   form.style.display = "none"
   shuffle()
   renderBoard()
