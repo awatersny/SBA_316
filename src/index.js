@@ -6,6 +6,7 @@
 const board = document.getElementById("board")
 const info = document.querySelector("#info-container")
 const form = document.querySelector("form")
+const msgEl = document.getElementById("msg")
 const boardData = []
 let match = -1
 let isMismatched = false
@@ -94,7 +95,6 @@ function renderBoard() {
     pic.style.display = "none"
     board.appendChild(cell)
     // console.log(cell.getAttribute("class")[0])
-
   })
 }
 

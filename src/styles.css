@@ -28,6 +28,22 @@ form {
   margin-top: 10vh;
 }
 
+#msg {
+  margin-top: 10px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  border: 10px outset #003049;
+  background-color: #EAE2B7;
+}
+
+#msg-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 #board-container {
   width: 100vw;
   display: flex;
@@ -54,6 +70,7 @@ form {
   flex-wrap: wrap;
   width: 760px;
   box-shadow: 10px 10px 11px #000000;
+  border: 10px outset #EAE2B7;
 }
 
 .cell {
