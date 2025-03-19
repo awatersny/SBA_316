@@ -1,5 +1,5 @@
 // // TODO Modify the HTML or text content of at least one element in response to user interaction using innerHTML, innerText, or textContent.
-//// TODO Use at least two Browser Object Model (BOM) properties or methods.  (One more to go)
+// // TODO Use at least two Browser Object Model (BOM) properties or methods.  (One more to go)
 //// TODO Include a README file that contains a description of your application.
 //// TODO Use the DocumentFragment interface or HTML templating with the cloneNode method to create templated content. 
 
@@ -8,12 +8,10 @@ const info = document.querySelector("#info-container")
 const form = document.querySelector("form")
 const msgEl = document.getElementById("msg")
 const boardData = []
-let userVal = ""
 let match = -1
 let isMismatched = false
 let username = ""
 let pairCount = 0
-let cells
 
 const pics = [
   {
@@ -55,7 +53,7 @@ form.addEventListener("submit", play)
 function play(evt) {
   evt.preventDefault()
   const userReg = /^\w+$/
-  userVal = evt.target.childNodes[1].value
+  let userVal = evt.target.childNodes[1].value
   if(!userReg.test(userVal)) {
     alert("Your username must not contain any special characters or whitespace!")
     evt.target.childNodes[1].value = ""
@@ -63,10 +61,9 @@ function play(evt) {
   }
   username = userVal
   form.style.display = "none"
-  renderMsg(`Hello ${userVal}.  Match the images.`)
+  renderMsg(`Hello ${username}.  Match the images.`)
   shuffle()
   renderBoard()
-  // clearBoard()
 }
 
 function shuffle() {
@@ -81,6 +78,9 @@ function shuffle() {
       pics[rand].instances++
     }
   }
+  pics.forEach(pic => {
+    pic.instances = 0
+  })
 }
 
 function renderBoard() {
@@ -96,13 +96,15 @@ function renderBoard() {
     cell.appendChild(pic)
     pic.style.display = "none"
     board.appendChild(cell)
-    // console.log(cell.getAttribute("class")[0])
   })
 }
 
 function clearBoard() {
   while(board.firstChild) {
     board.removeChild(board.firstChild)
+  }
+  while(boardData.length > 0) {
+    boardData.pop(boardData[boardData.length - 1])
   }
 }
 
@@ -129,10 +131,13 @@ function reveal(evt) {
     pairCount++
     match = -1
     if(pairCount === 8) {
-      renderMsg(`Congratulations ${userVal}!  You've matched them all!`)
-      msgEl.addEventListener("click", reset)
+      renderMsg(`Congratulations ${username}!  You've matched them all!`)
+      setTimeout(() => {
+        msgEl.addEventListener("click", reset)
+        renderMsg("Click here to restart.")
+      }, 2000);
     } else {
-      renderMsg(`Good job, ${userVal}!  You found a pair`)
+      renderMsg(`Good job, ${username}!  You found a pair`)
     }
     return
   }
@@ -157,7 +162,15 @@ function renderMsg(msg) {
 function reset(evt) {
   evt.preventDefault()
   msgEl.removeEventListener("click", reset)
-  // setTimeout(() => {
-    
-  // }, timeout);
+    msgEl.style.border = "10px inset #003049"
+  setTimeout(() => {
+    msgEl.style.border = "10px outset #003049"
+    clearBoard()
+    username = ""
+    pairCount = 0
+    board.style.display = "none"
+    msgEl.style.display = "none"
+    form.style.display = "flex"
+    form.addEventListener("submit", play)
+  }, 300);
 }
